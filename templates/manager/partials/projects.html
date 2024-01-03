@@ -1,0 +1,37 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>description</th>
+            <th>start_date</th>
+            <th>end_date</th>
+            <th>members</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pr in projects %}    
+            <tr>
+                <td>{{pr.name}}</td>
+                <td>{{pr.description}}</td>
+                <td>{{pr.start_date}}</td>
+                <td>{{pr.end_date}}</td>
+                <td>
+                <ul>
+                    {% for m in pr.teamProjects.all %}
+                        <li>{{m.name}}</li>
+                        <ul>
+                            {% for i in m.members.all %}
+                                <li>{{i.email}}</li>
+                            {% endfor %}
+                        </ul>
+                        
+                    {% endfor %}
+                </ul> 
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+
+

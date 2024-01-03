@@ -1,0 +1,38 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>Project</th>
+            <th>members</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in teams %}    
+            <tr>
+                <td>{{t.name}}</td>
+                <td>{{t.project}}</td>
+                <td>    
+                <ul>
+                    {% for mem in t.members.all %}
+                        <li class="fw-bold text-success">{{mem.email}}</li>
+                        <li><strong>Task of {{mem.username}}</strong></li>
+                        <ul>
+                            {% for task in mem.my_task.all %}
+                                {% if task.project == t.project %}
+                                <li>{{task}}</li>
+                                {% endif %}
+                           {% endfor %}
+                        <li ><a class="text-primary" href="{% url 'manager:assign-task' t.project.id mem.id %}">Assigned Now</a></li>    
+                            
+                        </ul>
+                        <hr>
+                    {% endfor %}
+                </ul> 
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+
+

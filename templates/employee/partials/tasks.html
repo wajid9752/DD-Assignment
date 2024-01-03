@@ -1,0 +1,33 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Deadline</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Project</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in tasks %}    
+            <tr>
+                <td>{{t.title}}</td>
+                <td>{{t.description}}</td>
+                <td>{{t.deadline}}</td>
+                <td>{{t.priority}}</td>
+                {% if t.status == "Pending" %}
+                <td class="text-warning">{{t.status}}</td>
+                {% else %}
+                <td class="text-success">{{t.status}}</td>
+                {% endif %}
+                <td>{{t.project}}</td>
+                <td><a class="text-primary" href="{% url 'employee:update-task' t.id %}">Update-Status</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+
+

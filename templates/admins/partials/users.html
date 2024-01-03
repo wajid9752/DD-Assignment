@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Joined</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in users %}    
+            <tr>
+                <td>{{u.username}}-{{u.email}}</td>
+                <td>{{u.role}}</td>
+                <td>{{u.created_at}}</td>
+                <td>{{u.active}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+
+

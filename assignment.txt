@@ -1,0 +1,20 @@
+Create  
+        a Django application demonstrating role-based authentication
+        with distinct dashboards for Admin, Manager, and Employee roles,
+        and a role-specific notification system. Use Django for backend 
+        and a front-end framework of your choice.
+
+
+Admin Dashboard: Display system stats like user count, 
+      active projects. Filter by date or status.
+Manager Dashboard: Show project data, team metrics. Filter by project, team, or timeline.
+Employee Dashboard: List tasks, deadlines, personal metrics. Filter by priority or status.
+Notifications:
+
+Admins: System issues alerts.
+Managers: Project milestones, team summaries.
+Employees: Task deadlines, feedback.
+Submit code via GitHub, with a README, 
+setup instructions, and comments. 
+Include unit tests for key functionalities. 
+Assess functionality, code quality, security, and testing.

@@ -1,0 +1,50 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load static %}
+
+
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 p-3 shadow">
+            <div id="error-message" class="alert alert-danger d-none" role="alert"></div>
+            <form method="POST" id="manager-form">
+                {% csrf_token %}
+                {{form}}
+                <button id="product-btn" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Submit</button>
+            </form>    
+        </div>
+    </div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        ///  sumbit the sell form
+        $("#manager-form").submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "{% url 'manager:add-project' %}",
+                data: $(this).serialize(),
+                success: function (data) {
+                    if (data.status === "success") {
+                        window.location.href = "{% url 'manager:manager-projects' %}";
+                    } else {
+                        // Display the error message
+                        console.log(data.status)
+                        $("#error-message").text(data.status).removeClass('d-none');
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+
+    });
+</script>
+{% endblock %}

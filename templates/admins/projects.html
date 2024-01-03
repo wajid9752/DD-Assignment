@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Company Projects </h3>
+                <p class="text-subtitle text-muted"></p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">ProjectTable</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Basic Tables start -->
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                <div class="row justify-content-center">
+                    <div class="col-6"> 
+                        <select 
+                        name="projects_status"
+                        class="form-select form-select-sm" 
+                        hx-get="{% url 'admins:filterd-projects' %}"
+                        hx-trigger="change"
+                        hx-target=".table"    
+                        hx-swap = "outerHTML"
+                        >
+                            <option value="all">All</option>
+                            <option value="active">Completed</option>
+                            <option value="deactive">Not-Completed</option>
+                        </select>
+                    </div>    
+                </div>
+              
+            </div>
+
+            <div class="card-body">
+                {% include 'admins/partials/projects.html' %}
+            </div>
+    </div>
+    
+    </section>
+    <!-- Basic Tables end -->
+</div>
+
+
+{% endblock %}
