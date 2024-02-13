@@ -1,3 +1,7 @@
+# output
+![image](https://github.com/wajid9752/DD-Assignment/assets/68110483/0da64922-f93a-4d4e-8041-b234f3f1b159)
+
+
 Note :This configuration is only for Windows users.
 # Step 1 : Clone the repository first
 
